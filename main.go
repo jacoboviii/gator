@@ -38,8 +38,14 @@ func main() {
 	commands.register("login", handleLogin)
 	commands.register("register", handleRegister)
 	commands.register("reset", handleReset)
-	commands.register("users", handleGetUsers)
+	commands.register("users", handleListUsers)
 	commands.register("agg", handleGetRSSFeed)
+	commands.register("addfeed", middlewareLoggedIn(handleAddFeed))
+	commands.register("feeds", handleListFeeds)
+	commands.register("follow", middlewareLoggedIn(handleFollow))
+	commands.register("following", middlewareLoggedIn(handleFollowing))
+	commands.register("unfollow", middlewareLoggedIn(handleUnfollow))
+	commands.register("browse", middlewareLoggedIn(handleBrowse))
 
 	args := os.Args
 	if len(args) < 2 {

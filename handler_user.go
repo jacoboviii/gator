@@ -30,7 +30,7 @@ func handleRegister(s *state, cmd command) error {
 		return fmt.Errorf("couldn't set user: %w", err)
 	}
 
-	fmt.Println("User crested successfully")
+	fmt.Println("User created successfully")
 	printUser(user)
 	return nil
 }
@@ -55,7 +55,7 @@ func handleLogin(s *state, cmd command) error {
 	return nil
 }
 
-func handleGetUsers(s *state, cmd command) error {
+func handleListUsers(s *state, cmd command) error {
 	users, err := s.db.GetUsers(context.Background())
 	if err != nil {
 		return fmt.Errorf("couldn't list users: %w", err)
